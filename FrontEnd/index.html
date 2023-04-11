@@ -4,20 +4,25 @@
 	<meta charset="UTF-8">
 	<title>Sophie Bluel - Architecte d'intérieur</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<script type="module" src="bluel.js"></script>
+	<!-- De trop ?-->
+	
+
 </head>
 <body>
 <header>
-	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li>login</li>
+			<li><a  class="logInLink" href="login.html"><span id="logInTxt">Login</span><span class="loggedEffect emilyIsAway">Logged</span></a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -35,53 +40,75 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
-		<div class="gallery">
-			<figure>
-				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-				<figcaption>Abajour Tahina</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-v.png" alt="Appartement Paris V">
-				<figcaption>Appartement Paris V</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/restaurant-sushisen-londres.png" alt="Restaurant Sushisen - Londres">
-				<figcaption>Restaurant Sushisen - Londres</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/la-balisiere.png" alt="Villa “La Balisiere” - Port Louis">
-				<figcaption>Villa “La Balisiere” - Port Louis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/structures-thermopolis.png" alt="Structures Thermopolis">
-				<figcaption>Structures Thermopolis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-x.png" alt="Appartement Paris X">
-				<figcaption>Appartement Paris X</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/le-coteau-cassis.png" alt="Pavillon “Le coteau” - Cassis">
-				<figcaption>Pavillon “Le coteau” - Cassis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/villa-ferneze.png" alt="Villa Ferneze - Isola d’Elba">
-				<figcaption>Villa Ferneze - Isola d’Elba</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII">
-				<figcaption>Appartement Paris XVIII</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/bar-lullaby-paris.png" alt="Bar “Lullaby” - Paris">
-				<figcaption>Bar “Lullaby” - Paris</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
-				<figcaption>Hotel First Arte - New Delhi</figcaption>
-			</figure>
+
+		
+		<div class="inlineProjects">
+			<h2>Mes Projets</h2>
+			
+				<div class="editCenter loggedEffect emilyIsAway" >
+					
+					<a href="#modal1" class="boxModal"><i class="fa-sharp fa-regular fa-pen-to-square"></i>Modifier</a>
+
+				</div>
+			
 		</div>
+
+		<section class="lineButtons">
+
+			<button data-filter="all" class="toggle">Tous</button>
+			<button data-filter="objects" class="toggle">Objets</button>
+			<button data-filter="appartments" class="toggle">Appartements</button>
+			<button data-filter="hostels" class="toggle">Hôtels & Restaurants</button>
+
+		</section>
+
+
+		<section class="gallery">
+	
+	
+		</section>
+
+
+		<!--  Première Modale -->
+		<aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="titlemodal" style="display: none;">
+			<div class="modal-wrapper js-modal-stop">
+				<div class="flec">
+				<button class="js-modal-close">
+
+					<i class="fa-solid fa-square-xmark"></i>
+
+				</button>
+				</div>
+
+				<h2 class="titlemodal">Galerie photo</h2>
+
+				<section class="gallery-thumbnail">
+
+				</section>
+
+				<div class="columnModal">
+				<button id="goTo2" class="buttonModal boxModal">Ajouter une photo</button>
+				<!--
+				<form action="#" method="post">
+					<input type="submit" value="Ajouter une photo">
+				</form>
+				-->
+				<a href="#">Supprimer la gallerie</a>
+				</div>
+				
+
+			</div>
+
+		</aside>
+
+		<!-- Seconde Modale -->
+
+		<aside id="moda2" class="modal" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="titlemodal" style="display: none;">
+
+			<p>Banane</p>
+
+		</aside>
+
 	</section>
 	<section id="contact">
 		<h2>Contact</h2>
@@ -106,4 +133,5 @@
 	</nav>
 </footer>
 </body>
+ 
 </html>
