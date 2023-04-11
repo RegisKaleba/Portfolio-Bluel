@@ -43,6 +43,7 @@
 
   }
 }
+//   / ! \ --> Faire du conteneur une variable
 
 function generateThumbnail(vignettes){
   for (let i = 0; i < vignettes.length; i++) {
@@ -88,7 +89,6 @@ function generateThumbnail(vignettes){
       // On rattache Image + nom à vignetteElement (la balise article)
       vignetteElement.appendChild(supprElementMinis);
       vignetteElement.appendChild(imageElementMinis);
-      
       vignetteElement.appendChild(nomElementMinis);
       
 
@@ -177,7 +177,7 @@ trashButton.forEach(clic => {
 // Changement du lien login en logged si token détecté 
 // + apparition du bouton pour suppression travail
 
-const token = localStorage.getItem("bearerAuth");
+const token = localStorage.getItem("UserInfos");
         if (token) {
           console.log(true);
           const loginEffect = document.getElementById('logInTxt');
@@ -208,8 +208,19 @@ const openModal = function(e) {
  
 }
 
+const openSecondModal = function(e) {
+  e.preventDefault()
+  const target = document.querySelector(e.target.getAttribute('href'))
+  target.style.display = null
+  target.removeAttribute('aria-hidden')
+  target.setAttribute('aria-modal', 'true')
+  modal = target
+  modal.addEventListener('click',closeModal)
+  modal.querySelector('.js-modal-close').addEventListener('click',closeModal)
+  modal.querySelector('.js-modal-stop').addEventListener('click',stopPropagation)
+}
+
 const closeModal = function(e) {
-  if (modal === null) return
   e.preventDefault()
   modal.style.display = "none"
   modal.setAttribute('aria-hidden', 'true')
@@ -219,6 +230,24 @@ const closeModal = function(e) {
   modal.querySelector('.js-modal-stop').removeEventListener('click', stopPropagation)
   modal = null
 }
+
+
+const stopPropagation = function (e) {
+  e.stopPropagation()
+}
+
+document.querySelectorAll('.boxModal').forEach(a => {
+  a.addEventListener('click', openModal)
+})
+
+document.querySelectorAll('.linkModal').forEach(a => {
+  a.addEventListener('click', openSecondModal)
+})
+
+document.querySelectorAll('.closeModal').forEach(a => {
+  a.addEventListener('click', closeModal)
+})
+
 
 /*function closeModal(idModal) {
   if (modal === null) return;
@@ -233,23 +262,6 @@ const closeModal = function(e) {
   modal = null;
 }
 */
-const stopPropagation = function (e) {
-  e.stopPropagation()
-}
-
-document.querySelectorAll('.boxModal').forEach(a => {
-  a.addEventListener('click', openModal)
-})
-
-document.querySelectorAll('.closeModal').forEach(a => {
-  a.addEventListener('click', closeModal)
-})
-
-document.querySelector("#goTo2").addEventListener('click', function(e) {
-  e.preventDefault();
-  closeModal();
-  
-})
 
 
 
@@ -371,3 +383,5 @@ document.querySelector("#goTo2").addEventListener('click', function(e) {
         });
 
         */
+
+        

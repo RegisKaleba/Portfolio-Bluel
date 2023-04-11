@@ -341,8 +341,8 @@ footer nav ul {
 
 .caseCenter {
 
-	margin-left: 400px;
-	margin-right: 400px;
+	margin-left: 40px;
+	margin-right: 40px;
 	
 }
 
@@ -410,6 +410,17 @@ footer nav ul {
 	padding: 20px;
 	background-color: white;
 	max-width: 630px;
+	border: 1px solid grey;
+	margin: 0 auto;
+	border-radius: 10px;
+	width: 100%
+}
+
+.modal-wrapper1 {
+	overflow: auto;
+	padding: 20px;
+	background-color: white;
+	max-width: 1000px;
 	border: 1px solid grey;
 	margin: 0 auto;
 	border-radius: 10px;

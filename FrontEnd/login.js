@@ -1,6 +1,6 @@
 // On cible le formulaire
 
-const bearerAuth = window.localStorage.getItem("Blips");
+const UserInfos = window.localStorage.getItem("Blips");
 document
     .querySelector("form")
     .addEventListener("submit", async function(e) {
@@ -45,7 +45,7 @@ document
 //Création du Token et stokage + redirection sur la page index si authentification réussie
 
         .then(body => {
-            window.localStorage.setItem("bearerAuth", JSON.stringify(body));
+            window.localStorage.setItem("UserInfos", JSON.stringify(body));
             window.location.replace("index.html");
         })
         .catch(e=> {

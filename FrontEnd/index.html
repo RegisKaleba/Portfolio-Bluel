@@ -10,7 +10,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script type="module" src="bluel.js"></script>
+	<script type="module" src="test.js"></script>
 	<!-- De trop ?-->
 	
 
@@ -86,13 +86,14 @@
 
 				</section>
 
+				<!--<div class="columnModal">
+				<button id="goTo2" class="buttonModal btn-link">Ajouter une photo</button>
+				
+				<form action="#modal2" method="post">
+					<button id="totoCaca" type="submit" name="your_name" value="your_value" class="btn-link">Go</button>
+				</form>-->
 				<div class="columnModal">
-				<button id="goTo2" class="buttonModal boxModal">Ajouter une photo</button>
-				<!--
-				<form action="#" method="post">
-					<input type="submit" value="Ajouter une photo">
-				</form>
-				-->
+				<a href="#modal2" class="boxModal"><i class="fa-sharp fa-regular fa-pen-to-square"></i>Ouvrir seconde modale</a>
 				<a href="#">Supprimer la gallerie</a>
 				</div>
 				
@@ -103,14 +104,50 @@
 
 		<!-- Seconde Modale -->
 
-		<aside id="moda2" class="modal" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="titlemodal" style="display: none;">
+		<aside id="modal2" class="modal" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="titlemodal" style="display: none;">
 
-			<p>Banane</p>
+			<div class="modal-wrapper js-modal-stop">
+				<div class="flec">
+				<button class="js-modal-close">
+
+					<i class="fa-solid fa-square-xmark"></i>
+
+				</button>
+				</div>
+
+				<section>
+        <form id="addWorkForm">
+            <div class="formColumn caseCenter">
+                <label for="image">Image</label>
+                <input type="file" id="image" placeholder="url de l'image">
+            </div>
+            <div class="formColumn caseCenter">
+                <label for="title">Titre</label>
+                <input type="text" id="title" placeholder="titre de l'oeuvre">
+				
+            </div>
+            <div class="formColumn caseCenter">
+                <label for="categoriesSelect">Catégorie associée</label>
+                <select name="category" id="categoriesSelect"></select>
+            </div>
+            <div class="formColumn">
+                <button type="submit">Ajouter</button>
+            </div>  
+    </section>
+
+				
+				<a href="#modal2" class="linkModal">Supprimer la gallerie</a>
+				</div>
+				
+
+			</div>
 
 		</aside>
 
 	</section>
+
 	<section id="contact">
+		<div class="formColumn">
 		<h2>Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>
 		<form action="#" method="post">
@@ -122,6 +159,7 @@
 			<textarea name="message" id="message" cols="30" rows="10"></textarea>
 			<input type="submit" value="Envoyer">
 		</form>
+		</div>
 	</section>
 </main>
 
