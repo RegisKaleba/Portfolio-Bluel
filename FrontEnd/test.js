@@ -215,49 +215,75 @@ generateCategoriesOptions();
 //Modals
 
 let modal = null
+let modal2 = null
+const previousModal = document.getElementById("modal1")
 
   // On crée la fonction openModal
 const openModal = function(e) {
   //On empêche le conportement par défaut
   e.preventDefault()
+  //On stocke dans "target" l'aside ayant pour valeur la cible de Href donc "modal1" ?
   const target = document.querySelector(e.target.getAttribute('href'))
+  console.log(target)
   target.style.display = null
   target.removeAttribute('aria-hidden')
   target.setAttribute('aria-modal', 'true')
   modal = target
   modal.addEventListener('click',closeModal)
   modal.querySelector('.js-modal-close').addEventListener('click',closeModal)
+  modal.querySelector('.btn-open-modal2').addEventListener('click',closeModal)
   modal.querySelector('.js-modal-stop').addEventListener('click',stopPropagation)
  
 }
 
 const openSecondModal = function(e) {
-  e.preventDefault()
-  const target = document.querySelector(e.target.getAttribute('href'))
-  target.style.display = null
-  target.removeAttribute('aria-hidden')
-  target.setAttribute('aria-modal', 'true')
-  modal = target
-  modal.addEventListener('click',closeModal)
-  modal.querySelector('.js-modal-close').addEventListener('click',closeModal)
-  modal.querySelector('.js-modal-stop').addEventListener('click',stopPropagation)
+  
+  
+  const target2 = document.querySelector(e.target.getAttribute('href'))
+  console.log(target2)
+  target2.style.display = null
+  target2.removeAttribute('aria-hidden')
+  target2.setAttribute('aria-modal', 'true')
+  modal2 = target2
+  modal2.addEventListener('click',closeModal)
+  modal2.querySelector('#testo3').addEventListener('click', closeSecondModal)
+  modal2.querySelector('.js-modal-close2').addEventListener('click',closeModal)
+  modal2.querySelector('.js-modal-stop').addEventListener('click',stopPropagation)
+
+  //previousModal = null
 }
 
 const closeModal = function(e) {
-  e.preventDefault()
-  modal.style.display = "none"
-  modal.setAttribute('aria-hidden', 'true')
-  modal.removeAttribute('aria-modal')
-  modal.removeEventListener('click', closeModal)
-  modal.querySelector('.js-modal-close').removeEventListener('click', closeModal)
-  modal.querySelector('.js-modal-stop').removeEventListener('click', stopPropagation)
-  modal = null
+  
+    e.preventDefault()
+    if (modal !== null) { // Vérifier si la variable modal est définie
+    modal.style.display = "none"
+    modal.setAttribute('aria-hidden', 'true')
+    modal.removeAttribute('aria-modal')
+    modal.removeEventListener('click', closeModal)
+    modal.querySelector('.js-modal-close').removeEventListener('click', closeModal)
+    modal.querySelector('.js-modal-stop').removeEventListener('click', stopPropagation)
+    modal = null
+  }
 }
+
+  const closeSecondModal = function(e) {
+    e.preventDefault()
+    modal2.style.display = "none"
+    modal2.setAttribute('aria-hidden', 'true')
+    modal2.removeAttribute('aria-modal')
+    modal2.removeEventListener('click', closeSecondModal)
+    modal2.querySelector('.js-modal-close2').removeEventListener('click', closeSecondModal)
+    modal2.querySelector('.js-modal-stop').removeEventListener('click', stopPropagation)
+    modal2 = null
+  }
 
 
 const stopPropagation = function (e) {
   e.stopPropagation()
 }
+
+
 
 document.querySelectorAll('.boxModal').forEach(a => {
   a.addEventListener('click', openModal)
@@ -270,4 +296,6 @@ document.querySelectorAll('.linkModal').forEach(a => {
 document.querySelectorAll('.closeModal').forEach(a => {
   a.addEventListener('click', closeModal)
 })
+
+
 
