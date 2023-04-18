@@ -26,6 +26,7 @@ const deleteWork = async (id) => {
     //Mais on peut récupérer le JSON de retour, pour vérifier que tout s'est bien passé
     let json = await response.json();
     console.log(JSON.stringify(json));
+   
   } catch(e) {
     //En cas d'erreur, on récupère le message d'erreur et on l'affiche dans la console
     console.log(e.message);
@@ -100,10 +101,13 @@ const getWorks = async () => {
     //On récupère le JSON de retour (en mode asynchrone, avec await)
     let json = await response.json();
     return json;
+    
   } catch(e) {
     console.log(e.message);
   }
 }
+
+
 
 const getCategories = async () => {
     try {
@@ -176,8 +180,6 @@ const generateVignettes = async (target) =>{
     }
 }
 
-
-
 //On crée une fonction asynchrone appellée generateCategoriesOptions
 const generateCategoriesOptions = async () => {
 //On recup les catégories qu'on stoche dans la variable categories  via la fonction getCategories
@@ -207,12 +209,13 @@ addWorkForm.addEventListener("submit", async (e) => {
 // La console indique un ajout d'oeuvre
     console.log("Ajout d'une oeuvre");
 //On crée trois variables image/title/category - On récup la valeur des champs d'entrée via les ID
-    const image = document.querySelector("#image").value;
+    const image = document.querySelector("#image").files[0];
     const title = document.querySelector("#title").value;
     const category = document.querySelector("#categoriesSelect").value;
     console.log(image,title,category);
     //const works = await addWork(image,title,category);
-    const works = await addWork(image,title,category);
+   
+   
 });
 
 //Créer fonction pour la gestion du clic sur les filtres
