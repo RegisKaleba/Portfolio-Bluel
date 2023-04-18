@@ -31,8 +31,52 @@ const deleteWork = async (id) => {
     console.log(e.message);
   }
 }
+const addWork = async (image, title, category) => {
+  try {
+    // Création d'un objet FormData pour envoyer les données
+    let formData = new FormData();
+    formData.append('image', image);
+    formData.append('title', title);
+    formData.append('categoryId', category);
 
-const addWork = async (image,title,category) => {
+    let response = await fetch(url + 'works', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + UserInfos.token },
+      body: formData // Utilisation de l'objet FormData comme corps de la requête
+    });
+
+    if (!response.ok) {
+      throw new Error('Erreur lors de l\'envoi de la requête. Code HTTP : ' + response.status);
+    }
+
+    let json = await response.json();
+    console.log(JSON.stringify(json));
+  } catch(e) {
+    console.log('Une erreur est survenue : ' + e.message);
+  }
+}
+
+/*const addWork = async (image,title,category) => {
+  try {
+      //Création d'un objet FormData pour envoyer les données
+      let formData = new FormData();
+      formData.append('image', image);
+      formData.append('title', title);
+      formData.append('categoryId', category);
+
+      let response = await fetch(url+'works', {
+          method: 'POST',
+          headers: { 'Authorization': 'Bearer ' + UserInfos.token },
+          body: formData //utilisation de l'objet FormData comme corps de la requête
+      });
+      let json = await response.json();
+      console.log(JSON.stringify(json));
+  } catch(e) {
+      console.log(e.message);
+  }
+}*/
+
+/*const addWork = async (image,title,category) => {
     try {
         let response = await fetch(url+'works', {
             method: 'POST',
@@ -41,10 +85,12 @@ const addWork = async (image,title,category) => {
         });
         let json = await response.json();
         console.log(JSON.stringify(json));
+        
     } catch(e) {
         console.log(e.message);
     }
-}
+}*/
+
 
 //Function asynchrone pour récupérer les éléments du portfolio
 const getWorks = async () => {
