@@ -32,30 +32,54 @@ const deleteWork = async (id) => {
     console.log(e.message);
   }
 }
-const addWork = async (image, title, category) => {
-  try {
-    // Création d'un objet FormData pour envoyer les données
-    let formData = new FormData();
-    formData.append('image', image);
-    formData.append('title', title);
-    formData.append('categoryId', category);
+async function addWork(image, title, category) {
+  const formData = new FormData();
+  formData.append("image", image);
+  formData.append("title", title);
+  formData.append("category", category);
 
-    let response = await fetch(url + 'works', {
-      method: 'POST',
-      headers: { 'Authorization': 'Bearer ' + UserInfos.token },
-      body: formData // Utilisation de l'objet FormData comme corps de la requête
-    });
+  const response = await fetch(url+'works', {
+    method: "POST",
+    headers: { 'Authorization': 'Bearer ' + UserInfos.token },
+    body: formData,
+  });
 
-    if (!response.ok) {
-      throw new Error('Erreur lors de l\'envoi de la requête. Code HTTP : ' + response.status);
-    }
+ /*const newWork = await response.json();
 
-    let json = await response.json();
-    console.log(JSON.stringify(json));
-  } catch(e) {
-    console.log('Une erreur est survenue : ' + e.message);
-  }
+  const worksList = document.querySelector("#worksList");
+  const newWorkElement = document.createElement("div");
+  newWorkElement.innerHTML = `
+    <img src="${newWork.image}" alt="${newWork.title}">
+    <h3>${newWork.title}</h3>
+    <p>${newWork.category}</p>
+  `;
+  worksList.appendChild(newWorkElement); */
+
 }
+
+//On crée la variable addWorkForm - On selectionne l'élément HTML avec l'ID addWorkForm
+const addWorkForm = document.querySelector("#addWorkForm");
+
+//On ajoute un listener qui enverra/soumet les valeurs en asynchrone
+addWorkForm.addEventListener("submit", async (e) => {
+  // On supprime le comportement par défaut
+  e.preventDefault();
+  // La console indique un ajout d'oeuvre
+  console.log("Ajout d'une oeuvre");
+  // On crée trois variables image/title/category - On récupère la valeur des champs d'entrée via les ID
+  const image = document.querySelector("#image").files[0];
+  const title = document.querySelector("#title").value;
+  const category = document.querySelector("#categoriesSelect").value;
+  
+  // On appelle la fonction addWork() pour ajouter l'oeuvre à l'API
+  await addWork(image, title, category);
+  
+  // On vide les champs du formulaire
+  document.querySelector("#image").value = "";
+  document.querySelector("#title").value = "";
+  document.querySelector("#categoriesSelect").value = "";
+});
+
 
 /*const addWork = async (image,title,category) => {
   try {
@@ -91,6 +115,22 @@ const addWork = async (image, title, category) => {
         console.log(e.message);
     }
 }*/
+
+/*On crée la variable addWorkForm - On selectionne l'élément HTML avec l'ID addWorkForm
+const addWorkForm = document.querySelector("#addWorkForm");
+//On ajoute un listener qui enverra/soumet les valeurs en asynchrone
+addWorkForm.addEventListener("submit", async (e) => {
+// On supprime le comportement par défaut
+    e.preventDefault();
+// La console indique un ajout d'oeuvre
+    console.log("Ajout d'une oeuvre");
+//On crée trois variables image/title/category - On récup la valeur des champs d'entrée via les ID
+    const image = document.querySelector("#image").files[0];
+    const title = document.querySelector("#title").value;
+    const category = document.querySelector("#categoriesSelect").value;
+    console.log(image,title,category);
+    //const works = await addWork(image,title,category);
+});    */
 
 
 //Function asynchrone pour récupérer les éléments du portfolio
@@ -200,24 +240,7 @@ const generateCategoriesOptions = async () => {
 }
 
 
-//On crée la variable addWorkForm - On selectionne l'élément HTML avec l'ID addWorkForm
-const addWorkForm = document.querySelector("#addWorkForm");
-//On ajoute un listener qui enverra/soumet les valeurs en asynchrone
-addWorkForm.addEventListener("submit", async (e) => {
-// On supprime le comportement par défaut
-    e.preventDefault();
-// La console indique un ajout d'oeuvre
-    console.log("Ajout d'une oeuvre");
-//On crée trois variables image/title/category - On récup la valeur des champs d'entrée via les ID
-    const image = document.querySelector("#image").files[0];
-    const title = document.querySelector("#title").value;
-    const category = document.querySelector("#categoriesSelect").value;
-    console.log(image,title,category);
-    //const works = await addWork(image,title,category);
-   
-    
-   
-});
+
 
 //Créer fonction pour la gestion du clic sur les filtres
 const buttonFilter = Object.values(document.getElementsByClassName("toggle"));
