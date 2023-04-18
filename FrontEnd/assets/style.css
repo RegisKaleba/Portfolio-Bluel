@@ -192,6 +192,9 @@ li:any-link {
 
 .gallery  img {
 	width: 100%;
+	min-height: 525px;
+	max-height: 525px;
+	object-fit: cover;
 
 }
 
