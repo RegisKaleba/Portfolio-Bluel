@@ -13,6 +13,7 @@ document
             previousError.remove();
         }
 
+        
 //On cible les imputs mail + password
 
         const loginFormDatas = {

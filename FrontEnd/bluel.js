@@ -90,8 +90,6 @@ function generateThumbnail(vignettes){
       vignetteElement.appendChild(supprElementMinis);
       vignetteElement.appendChild(imageElementMinis);
       vignetteElement.appendChild(nomElementMinis);
-      
-
 
   }
 }

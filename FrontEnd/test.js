@@ -215,6 +215,7 @@ addWorkForm.addEventListener("submit", async (e) => {
     console.log(image,title,category);
     //const works = await addWork(image,title,category);
    
+    
    
 });
 
