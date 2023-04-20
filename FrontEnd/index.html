@@ -15,8 +15,21 @@
 	
 
 </head>
+
+
 <body>
-<header>
+
+	<div class="loggedEffect emilyIsAway" >
+	<div class="modificationHeader" >
+		<i class="fa-sharp fa-regular fa-pen-to-square"></i>
+		<p>Mode Édition</p>
+		<button class="btn-modificationHeader">Publier les changements</button>
+	</div>
+	</div>
+
+	
+
+<header class="myDisplay " >
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
@@ -27,7 +40,7 @@
 		</ul>
 	</nav>
 </header>
-<main>
+<main class="myDisplay" >
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
@@ -77,32 +90,25 @@
 				<div class="flec">
 				<button id="testo1" class="js-modal-close">
 
-					<i class="fa-solid fa-square-xmark"></i>
+					<i class="fa-sharp fa-solid fa-xmark"></i>
 
 				</button>
 				
 				</div>
 
-				<h2 class="titlemodal">Galerie photo</h2>
+				<h2 class="titlemodal">Galerie photo <i class="fa-solid fa-dash"></i></h2>
 
 				<section class="gallery-thumbnail">
 
 				</section>
 
-				
+				<div class="redIsDead" >
+					<HR ALIGN=CENTER WIDTH="450">
+				</div>
 
-				<!--<div class="columnModal">
-				<button id="goTo2" class="buttonModal btn-link">Ajouter une photo</button>
-				
-				<form action="#modal2" method="post">
-					<button id="totoCaca" type="submit" name="your_name" value="your_value" class="btn-link">Go</button>
-				</form>-->
-				
 				<div class="columnModal">
 					<button id="testo2" class="btn-open-modal2 linkModal" href="#modal2">
-
-						Ouvrir la modale 2
-	
+						Ajouter une photo
 					</button>
 					<a href="#">Supprimer la gallerie</a>
 				</div>
@@ -127,27 +133,31 @@
 
 
 				<section>
-        <form id="addWorkForm">
-            <div class="formColumn caseCenter">
-                <label for="image">Image</label>
-                <input type="file" id="image" placeholder="url de l'image">
-            </div>
-            <div class="formColumn caseCenter">
-                <label for="title">Titre</label>
-                <input type="text" id="title" placeholder="titre de l'oeuvre">	
-            </div>
-            <div class="formColumn caseCenter">
-                <label for="categoriesSelect">Catégorie associée</label>
-                <select name="category" id="categoriesSelect"></select>
-            </div>
-            <div class="formColumn">
-                <button type="submit">Ajouter</button>
-            </div>  
+        			<form id="addWorkForm">
+						<div class="formColumn caseCenter">
+							<label for="image">Image</label>
+							<input type="file" id="image" placeholder="url de l'image">
+						</div>
+						<div class="formColumn caseCenter">
+							<label for="title">Titre</label>
+							<input type="text" id="title" placeholder="titre de l'oeuvre">	
+						</div>
+						<div class="formColumn caseCenter">
+							<label for="categoriesSelect">Catégorie associée</label>
+							<select name="category" id="categoriesSelect"></select>
+						</div>
+
+						<div class="redIsDead" >
+							<HR ALIGN=CENTER WIDTH="450">
+						</div>
+
+						<div class="formColumn">
+							<button type="submit">Ajouter</button>
+						</div>  
     			</section>
 
 				
-				<a href="#modal2" class="linkModal">Supprimer la gallerie</a>
-				</div>
+				
 				
 
 			</div>
@@ -173,7 +183,7 @@
 	</section>
 </main>
 
-<footer>
+<footer class="myDisplay" >
 	<nav>
 		<ul>
 			<li>Mentions Légales</li>

@@ -3,7 +3,7 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
+body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -48,12 +48,15 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
-body {
+
+.myDisplay {
+
 	max-width: 1140px;
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
+
 header {
 	display: flex;
 	justify-content: space-between;
@@ -200,6 +203,7 @@ li:any-link {
 
 .gallery-thumbnail {
 	overflow: auto;
+	height: 500px;
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -209,7 +213,11 @@ li:any-link {
 }
 
 .gallery-thumbnail img{
- width: 100%;
+
+ 	width: 100%;
+ 	min-height: 140px;
+	max-height: 140px;
+	object-fit: cover;
 }
 
 #contact {
@@ -311,11 +319,6 @@ footer nav ul {
 
 }
 
-.redIsDead {
-
-	color: crimson;
-}
-
 .emilyIsAway {
 
 	display: none;
@@ -405,7 +408,7 @@ footer nav ul {
 }
 
 .modal-wrapper {
-	overflow: auto;
+	
 	padding: 20px;
 	background-color: white;
 	max-width: 630px;
@@ -416,7 +419,7 @@ footer nav ul {
 }
 
 .modal-wrapper1 {
-	overflow: auto;
+
 	padding: 20px;
 	background-color: white;
 	max-width: 1000px;
@@ -454,6 +457,51 @@ footer nav ul {
 	width: 300px;
 	
 	
+}
+
+.modificationHeader {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #000000;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+	height: 59px;
+	margin-bottom: 25px;
+	
+}
+
+.btn-modificationHeader {
+	font-weight: bold;
+	margin-left: 15px;
+	border-radius: 60px;
+	padding:10px 25px 10px 25px ;
+
+}
+
+.btn-open-modal2 {
+
+	margin: 15px 0px 15px 0px;
+	font-family: 'Syne';
+	color: #FFFEF8;
+	background-color: #1D6154;
+	padding: 10px;
+	border-radius: 20px;
+	margin-bottom: 20px;
+	width: 300px;
+
+}
+
+.btn-suppression {
+	
+	background-color: #000000;
+	color: #fff;
+	margin-top: 5px;
+	margin-right: 5px;
+	border: none;
+	border-radius: 5px;
+	padding: 5px 7px 5px 7px;
 }
 
 .toto {

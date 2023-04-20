@@ -44,22 +44,10 @@ async function addWork(image, title, category) {
     body: formData,
   });
 
- /*const newWork = await response.json();
-
-  const worksList = document.querySelector("#worksList");
-  const newWorkElement = document.createElement("div");
-  newWorkElement.innerHTML = `
-    <img src="${newWork.image}" alt="${newWork.title}">
-    <h3>${newWork.title}</h3>
-    <p>${newWork.category}</p>
-  `;
-  worksList.appendChild(newWorkElement); */
-
 }
 
 //On crée la variable addWorkForm - On selectionne l'élément HTML avec l'ID addWorkForm
 const addWorkForm = document.querySelector("#addWorkForm");
-
 //On ajoute un listener qui enverra/soumet les valeurs en asynchrone
 addWorkForm.addEventListener("submit", async (e) => {
   // On supprime le comportement par défaut
@@ -78,60 +66,8 @@ addWorkForm.addEventListener("submit", async (e) => {
   document.querySelector("#image").value = "";
   document.querySelector("#title").value = "";
   document.querySelector("#categoriesSelect").value = "";
+ 
 });
-
-
-/*const addWork = async (image,title,category) => {
-  try {
-      //Création d'un objet FormData pour envoyer les données
-      let formData = new FormData();
-      formData.append('image', image);
-      formData.append('title', title);
-      formData.append('categoryId', category);
-
-      let response = await fetch(url+'works', {
-          method: 'POST',
-          headers: { 'Authorization': 'Bearer ' + UserInfos.token },
-          body: formData //utilisation de l'objet FormData comme corps de la requête
-      });
-      let json = await response.json();
-      console.log(JSON.stringify(json));
-  } catch(e) {
-      console.log(e.message);
-  }
-}*/
-
-/*const addWork = async (image,title,category) => {
-    try {
-        let response = await fetch(url+'works', {
-            method: 'POST',
-            headers: { 'Authorization': 'Bearer ' + UserInfos.token, 'Content-Type': 'multipart/form-data' },
-            data: image,title,category
-        });
-        let json = await response.json();
-        console.log(JSON.stringify(json));
-        
-    } catch(e) {
-        console.log(e.message);
-    }
-}*/
-
-/*On crée la variable addWorkForm - On selectionne l'élément HTML avec l'ID addWorkForm
-const addWorkForm = document.querySelector("#addWorkForm");
-//On ajoute un listener qui enverra/soumet les valeurs en asynchrone
-addWorkForm.addEventListener("submit", async (e) => {
-// On supprime le comportement par défaut
-    e.preventDefault();
-// La console indique un ajout d'oeuvre
-    console.log("Ajout d'une oeuvre");
-//On crée trois variables image/title/category - On récup la valeur des champs d'entrée via les ID
-    const image = document.querySelector("#image").files[0];
-    const title = document.querySelector("#title").value;
-    const category = document.querySelector("#categoriesSelect").value;
-    console.log(image,title,category);
-    //const works = await addWork(image,title,category);
-});    */
-
 
 //Function asynchrone pour récupérer les éléments du portfolio
 const getWorks = async () => {
@@ -192,6 +128,28 @@ const generateVignettes = async (target) =>{
         // On rattache la balise article a la section Fiches
         sectionFiches.appendChild(vignetteElement);
 
+        if (target === ".gallery-thumbnail") {
+          if(UserInfos)
+          {
+              //Ajout d'un bouton de suppression
+              const buttonElement = document.createElement("button");
+              buttonElement.innerHTML  = '<i class="fa-solid fa-trash"></i>';
+              buttonElement.classList.add('btn-suppression')
+              //Ajout d'un écouteur d'évenement
+              buttonElement.addEventListener("click", async (e) => {
+                  e.preventDefault();
+                  console.log(`Suppression de la photo N°${article.id}`);
+                  
+                  //On supprime de la BDD
+                  const vignettes = await deleteWork(article.id);
+                  
+              });
+              vignetteElement.appendChild(buttonElement);
+              buttonElement.style.position = "absolute";
+              buttonElement.style.top = "0";
+              buttonElement.style.right = "0";
+          }
+        }
         // Image : Création de l'élément + association de l'URL + ajout à la vignette
         const imageElement = document.createElement("img");
         imageElement.src = article.imageUrl;
@@ -201,22 +159,9 @@ const generateVignettes = async (target) =>{
         const nomElement = document.createElement("p");
         nomElement.innerText = article.title;
         vignetteElement.appendChild(nomElement);
-        if(UserInfos)
-        {
-            //Ajout d'un bouton de suppression
-            const buttonElement = document.createElement("button");
-            buttonElement.innerText = "Supprimer";
-            //Ajout d'un écouteur d'évenement
-            buttonElement.addEventListener("click", async (e) => {
-                e.preventDefault();
-                console.log(`Suppression de la photo N°${article.id}`);
-                
-                //On supprime de la BDD
-                const vignettes = await deleteWork(article.id);
-                
-            });
-            vignetteElement.appendChild(buttonElement);
-        }
+
+        vignetteElement.style.position = "relative";
+        
     }
 }
 
