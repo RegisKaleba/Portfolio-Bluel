@@ -328,37 +328,42 @@ window.addEventListener('click', function(e) {
   }
 });
 
-					const fileInput = document.getElementById("file-upload");
-					const previewImage = document.getElementById("preview-image");
-          const errorMessage = document.getElementById("error-message");
+const fileInput = document.getElementById("file-upload");
+const previewImage = document.getElementById("preview-image");
+const errorMessage = document.getElementById("error-message");
 				  
-					fileInput.addEventListener("change", function() {
-					  const file = this.files[0];
-					  if (file) {
-						const reader = new FileReader();
-						reader.addEventListener("load", function() {
-						  previewImage.setAttribute("src", reader.result);
-						});
-						reader.readAsDataURL(file);
-					  }
+fileInput.addEventListener("change", function() {
+	const file = this.files[0];
+	if (file) {
+		const reader = new FileReader();
+		reader.addEventListener("load", function() {
+		previewImage.setAttribute("src", reader.result);
+});
+	  reader.readAsDataURL(file);
+	}
 					});
 
-          const form = document.getElementById("addWorkForm");
+const form = document.getElementById("addWorkForm");
 
-            form.addEventListener("submit", function(event) {
-                const titleInput = document.getElementById("title");
-                const categorySelect = document.getElementById("categoriesSelect");
+form.addEventListener("submit", function(event) {
+  const titleInput = document.getElementById("title");
+  const categorySelect = document.getElementById("categoriesSelect");
 
-                if (!titleInput.value || !categorySelect.value) {
-                    event.preventDefault();
-                    errorMessage.classList.remove("emilyIsAway");
-                }
+  if (!titleInput.value || !categorySelect.value) {
+  event.preventDefault();
+    errorMessage.classList.remove("emilyIsAway");
+  }
+
+ 
+    
+                
             });
 				  
-          previewImage.addEventListener("click", function() {
-            fileInput.value = null;
-            previewImage.setAttribute("src", "");
-          }); 
+    previewImage.addEventListener("click", function() {
+      fileInput.value = null;
+      previewImage.setAttribute("src", "");
+      errorMessage.classList.add("emilyIsAway");
+    }); 
 
 
 

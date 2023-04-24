@@ -324,6 +324,11 @@ footer nav ul {
 	display: none;
 }
 
+.errorNone {
+
+	display: none;
+}
+
 /* La partie formulaire du Login*/
 
 .formColumn {
@@ -553,8 +558,12 @@ footer nav ul {
   }
 
   #error-message {
+	justify-content: center;
+	color: red;
+  }
+
+  .errorCenter {
+
 	display: flex;
 	justify-content: center;
-
-	color: red;
   }
