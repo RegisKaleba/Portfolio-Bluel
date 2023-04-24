@@ -24,7 +24,6 @@
         }
       vignetteElement.classList.add(addClasses);
       
-   
       // Image + nom créés
       const imageElement = document.createElement("img");
       imageElement.src = article.imageUrl;

@@ -352,11 +352,7 @@ form.addEventListener("submit", function(event) {
   if (!titleInput.value || !categorySelect.value) {
   event.preventDefault();
     errorMessage.classList.remove("emilyIsAway");
-  }
-
- 
-    
-                
+  }        
             });
 				  
     previewImage.addEventListener("click", function() {

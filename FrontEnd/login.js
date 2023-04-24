@@ -50,7 +50,7 @@ document
             window.location.replace("index.html");
         })
         .catch(e=> {
-
+            
 //Création des messages d'erreurs
             const error = document.createElement("p");
             error.classList.add("error");
