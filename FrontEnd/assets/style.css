@@ -345,7 +345,14 @@ footer nav ul {
 
 	margin-left: 40px;
 	margin-right: 40px;
+	padding: 0 55px 0 55px;;
 	
+}
+
+.btn-add-img {
+	border-radius: 25px;
+	background-color: #1D6154;
+
 }
 
 #errorText {
@@ -512,3 +519,42 @@ footer nav ul {
 	background-color: black;
 	color: #FFFEF8;
 }
+
+.containerImg {
+
+	background-color: #E8F1F7;
+	height: 170px;
+
+}
+
+#preview-image {
+	display: flex;
+	max-width: 120px;
+	min-width: 120px;
+	max-height: 170px;
+	min-height: 170px;
+	position: absolute;
+	object-fit: cover;
+	margin-top: 140px;
+	justify-content: center;
+}
+
+.centerCenter {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.redIsDead hr {
+	margin: 0 auto;
+	width: 450px;
+  }
+
+  #error-message {
+	display: flex;
+	justify-content: center;
+
+	color: red;
+  }

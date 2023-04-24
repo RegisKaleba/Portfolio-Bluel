@@ -10,7 +10,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script type="module" src="test.js"></script>
+	<script type="module" src="index.js"></script>
 	<!-- De trop ?-->
 	
 
@@ -133,32 +133,47 @@
 
 
 				<section>
-        			<form id="addWorkForm">
-						<div class="formColumn caseCenter">
-							<label for="image">Image</label>
-							<input type="file" id="image" placeholder="url de l'image">
-						</div>
-						<div class="formColumn caseCenter">
-							<label for="title">Titre</label>
-							<input type="text" id="title" placeholder="titre de l'oeuvre">	
-						</div>
-						<div class="formColumn caseCenter">
-							<label for="categoriesSelect">Catégorie associée</label>
-							<select name="category" id="categoriesSelect"></select>
-						</div>
+					<form  id="addWorkForm">
+						<div class="CenterCenter">
 
-						<div class="redIsDead" >
-							<HR ALIGN=CENTER WIDTH="450">
-						</div>
+						
+					  <div class="containerImg formColumn caseCenter ">
+						
+						<label for="file-upload" class="custom-file-upload">
+							<div class="centerCenter">
+								<i class="fa fa-cloud-upload"></i> 
+						  		<p> Choisir un fichier</p>
+								<img id="preview-image" src="" alt="">
+							</div>
+						   
+						</label>
+						<input type="file" id="file-upload" accept=".jpg,.jpeg,.png" style="display:none;" />
+						
+					  </div>
+				  
+					  <div class="formColumn caseCenter ">
+						<label for="title">Titre</label>
+						<input type="text" id="title" placeholder="titre de l'oeuvre">
+					  </div>
+					  <div class="formColumn caseCenter ">
+						<label for="categoriesSelect">Catégorie associée</label>
+						<select name="category" id="categoriesSelect"></select>
+					  </div>
+				  
+					  <div class="redIsDead">
+						<hr>
+						<p id="error-message" class="emilyIsAway">Veuillez remplir tous les champs requis.</p>
+					  </div>
+				  
+					  <div class="formColumn">
+						<button type="submit">Ajouter</button>
+					  </div>
 
-						<div class="formColumn">
-							<button type="submit">Ajouter</button>
-						</div>  
-    			</section>
+					</div>
 
-				
-				
-				
+					</form>
+				  </section>
+				  
 
 			</div>
 
