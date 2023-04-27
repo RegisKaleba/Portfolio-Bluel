@@ -95,6 +95,10 @@ const getCategories = async () => {
     }
 }
 
+
+
+
+
 //Génération des 2léments du portfolio
 const generateVignettes = async (target) =>{
 
@@ -111,6 +115,7 @@ const generateVignettes = async (target) =>{
         const vignetteElement = document.createElement("article");
         //On ajout la classe portfolio, commune à toutes les vignettes
         vignetteElement.classList.add('all');
+        
         //On ajoute la classe correspondant à la catégorie de l'oeuvre
         let classeARajouter;
         switch(article.categoryId) {
@@ -125,6 +130,7 @@ const generateVignettes = async (target) =>{
             break;
         }
         vignetteElement.classList.add(classeARajouter);
+        vignetteElement.dataset.filter = classeARajouter;
         // On rattache la balise article a la section Fiches
         sectionFiches.appendChild(vignetteElement);
 
@@ -160,6 +166,11 @@ const generateVignettes = async (target) =>{
         nomElement.innerText = article.title;
         vignetteElement.appendChild(nomElement);
 
+        const categryNomElement = document.createElement("p");
+        categryNomElement.innerText = article.category.name;
+        vignetteElement.appendChild(categryNomElement);
+        vignetteElement.dataset.filter = article.category.name;
+
         vignetteElement.style.position = "relative";
         
     }
@@ -167,22 +178,91 @@ const generateVignettes = async (target) =>{
 
 //On crée une fonction asynchrone appellée generateCategoriesOptions
 const generateCategoriesOptions = async () => {
-//On recup les catégories qu'on stoche dans la variable categories  via la fonction getCategories
-    const categories = await getCategories();
-//
-    const selectElement = document.querySelector("#categoriesSelect");
-//On boucle parmi toutes els catégories
-    for (let i = 0; i < categories.length; i++) {
-        const category = categories[i];
-//On crée le nouvel élément option à ajouter au DOM
-        const optionElement = document.createElement("option");
-//On ajoute la valeur de l'id et le nom à afficher  de la catégorie au nouvel élement 'option'
-//puis basculé vers l'élement 'selectElement' (Ayant l'id 'categoriesSelect')
-        optionElement.value = category.id;
-        optionElement.innerText = category.name;
-        selectElement.appendChild(optionElement);
-    }
-}
+  //On recup les catégories qu'on stoche dans la variable categories  via la fonction getCategories
+  const categories = await getCategories();
+  
+  const selectElement = document.querySelector("#categoriesSelect");
+  //On boucle parmi toutes els catégories
+  for (let i = 0; i < categories.length; i++) {
+    const category = categories[i];
+    //On crée le nouvel élément option à ajouter au DOM
+    const optionElement = document.createElement("option");
+    //On ajoute la valeur de l'id et le nom à afficher  de la catégorie au nouvel élement 'option'
+    //puis basculé vers l'élement 'selectElement' (Ayant l'id 'categoriesSelect')
+    optionElement.value = category.id;
+    optionElement.innerText = category.name;
+    selectElement.appendChild(optionElement);
+  }
+
+  const categoriesSection = document.querySelector('#btn-categories');
+  const allButton = document.createElement("button");
+  allButton.textContent = "Tous";
+  allButton.classList.add("toggle");
+  allButton.dataset.filter = ("all");
+
+  // Ajouter le bouton "all" avant les autres boutons de catégorie
+  categoriesSection.insertBefore(allButton, categoriesSection.firstChild);
+
+  // Ajouter un bouton pour chaque catégorie
+  for (let i = 0; i < categories.length; i++) {
+    const category = categories[i];
+    const button = document.createElement('button');
+    button.textContent = category.name;
+    button.classList.add('toggle');
+    button.dataset.filter = category.name;
+
+    button.addEventListener('click', () => console.log(`Le bouton ${category.name} a été cliqué`));
+
+    button.addEventListener('click', function() {
+      // Supprimer la classe 'buttonClicked' de tous les boutons de catégorie
+      const buttons = categoriesSection.querySelectorAll('button.toggle');
+      buttons.forEach((btn) => {
+        btn.classList.remove('buttonClicked');
+      });
+      // Ajouter la classe 'buttonClicked' au bouton cliqué
+      button.classList.add('buttonClicked');
+    });
+
+    categoriesSection.appendChild(button);
+  }
+
+  allButton.addEventListener('click', function() {
+    // Supprimer la classe 'buttonClicked' de tous les boutons de catégorie
+    const buttons = categoriesSection.querySelectorAll('button.toggle');
+    buttons.forEach((btn) => {
+      btn.classList.remove('buttonClicked');
+    });
+    // Ajouter la classe 'buttonClicked' au bouton "all"
+    allButton.classList.add('buttonClicked');
+  });
+
+  const buttonFilter = Object.values(document.getElementsByClassName("toggle"));
+
+  buttonFilter.forEach(clic => {
+    clic.addEventListener("click", function (e) {
+      e.preventDefault();
+      const filter = this.dataset.filter;
+      
+      // On boucle sur tous les boutons toggle
+      const stickers = document.querySelectorAll(".all");
+  
+      if (filter === "all") {
+        stickers.forEach(sticker => {
+          sticker.classList.remove("emilyIsAway");
+        });
+      } else {
+        stickers.forEach(sticker => {
+          if (sticker.dataset.filter === filter) {
+            sticker.classList.remove("emilyIsAway");
+          } else {
+            sticker.classList.add("emilyIsAway");
+          }
+        });
+      }
+    });
+  });
+
+};
 
 
 
@@ -193,10 +273,11 @@ buttonFilter.forEach(clic => {
   clic.addEventListener("click", function (e) {
     e.preventDefault();
     const filter = this.dataset.filter;
+    
     // On boucle sur tous les boutons toggle
     buttonFilter.forEach(button => {
       
-      if (button.dataset.filter === "all" || button.dataset.filter === "hostels" || button.dataset.filter === "appartments" || button.dataset.filter === "objects") {
+      if (button.dataset.filter === "all" || button.dataset.filter === "Hotels" || button.dataset.filter === "Appartements" || button.dataset.filter === "Objets") {
         
         if (button !== this) {
           button.classList.add("buttonNotClicked");
@@ -218,6 +299,8 @@ buttonFilter.forEach(clic => {
   });
 });
 
+
+
 const token = localStorage.getItem("UserInfos");
         if (token) {
           console.log(true);
@@ -230,6 +313,25 @@ const token = localStorage.getItem("UserInfos");
             });  
           };
 
+
+// On sélectionne tous les boutons de catégorie
+const categoryButtons = document.querySelectorAll('#btn-categories button');
+
+// On ajoute un écouteur d'événements de clic à chacun des boutons
+categoryButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const filterValue = button.dataset.filter; // On obtient la valeur du filtre de données de l'élément cliqué
+    const vignettes = document.querySelectorAll('.gallery, .gallery-thumbnail'); // On sélectionne toutes les vignettes
+    vignettes.forEach(vignette => {
+      const dataFilter = vignette.dataset.filter; // On obtient la valeur du filtre de données de la vignette
+      if (filterValue === 'all' || filterValue === dataFilter) {
+        vignette.classList.remove('emilyIsAway'); // Si le filtre de données correspond, on retire la classe emilyIsAway
+      } else {
+        vignette.classList.add('emilyIsAway'); // Sinon, on ajoute la classe emilyIsAway
+      }
+    });
+  });
+});
 
 
 generateVignettes(".gallery");

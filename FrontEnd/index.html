@@ -35,7 +35,7 @@
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li><a  class="logInLink" href="login.html"><span id="logInTxt">Login</span><span class="loggedEffect emilyIsAway">Logged</span></a></li>
+			<li><a  class="logInLink" href="login.html"><span id="logInTxt">Login</span><span class="loggedEffect emilyIsAway">Logout</span></a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -66,14 +66,19 @@
 			
 		</div>
 
-		<section class="lineButtons">
+		<section id="btn-categories" >
+
+
+		</section>
+
+		<!--<section class="lineButtons">
 
 			<button data-filter="all" class="toggle">Tous</button>
 			<button data-filter="objects" class="toggle">Objets</button>
 			<button data-filter="appartments" class="toggle">Appartements</button>
 			<button data-filter="hostels" class="toggle">Hôtels & Restaurants</button>
 
-		</section>
+		</section> -->
 
 
 		<section class="gallery">
@@ -141,7 +146,8 @@
 						
 						<label for="file-upload" class="custom-file-upload">
 							<div class="centerCenter">
-								<i class="fa fa-cloud-upload"></i> 
+								<img src=".\assets\icons\insertImg.svg" alt="">
+								<p class="btn-add-photo">+Ajouter Photo</p>
 						  		<p> Choisir un fichier</p>
 								<img id="preview-image" src="" alt="">
 							</div>
