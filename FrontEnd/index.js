@@ -168,7 +168,7 @@ const generateVignettes = async (target) =>{
 
         const categryNomElement = document.createElement("p");
         categryNomElement.innerText = article.category.name;
-        vignetteElement.appendChild(categryNomElement);
+        
         vignetteElement.dataset.filter = article.category.name;
 
         vignetteElement.style.position = "relative";
@@ -399,6 +399,9 @@ const closeModal = function(e) {
 
 const closeSecondModal = function(e) {
   e.preventDefault()
+  if (!errorMessage.classList.contains("emilyIsAway")) { // Vérifie si le message d'erreur est affiché
+    return; // Si oui, ne ferme pas la modale
+  }
   modal2.style.display = "none"
   modal2.setAttribute('aria-hidden', 'true')
   modal2.removeAttribute('aria-modal')
